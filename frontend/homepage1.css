@@ -1,0 +1,47 @@
+
+.general-div {
+  display: grid;
+  margin: 0 auto;
+  max-width: 1200px;
+  gap: 50px;
+}
+
+.div-overall-GPA {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  width: 300px;
+  padding: 45px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-right: 30px;
+}
+
+.div-add-term {
+  display: flex;
+}
+
+.add-term {
+  margin-left: auto;
+  margin-right: 30px;
+  width: 150px;
+  border-radius: 15px;
+}
+
+.div-first-term {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  width: 1200px;
+  padding: 45px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.add-first-term {
+  margin-top: 25px;
+}
