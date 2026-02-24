@@ -15,7 +15,7 @@
   width: min(520px, 90vw);
   background: white;
   border-radius: 12px;
-  padding: 18px;
+  padding: 2px 25px 10px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
@@ -39,7 +39,7 @@
 .modal-body{
   display: grid;
   margin-top: 12px;
-  gap: 20px;
+  gap: 30px;
 }
 
 .modal-body input, .modal-body select {
@@ -53,4 +53,29 @@
   justify-content: flex-end;
   gap: 10px;
 }
+
+.season, .year {
+  font-weight: 900;
+  font-size:large;
+}
+
+#cancelButton, #addTerm {
+  width: 50%;
+  cursor: pointer;
+  font-weight: 900;
+  font-size:large;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+#addTerm {
+  background-color: rgba(39, 150, 206, 0.875);
+  color: white; 
+}
+
+/*You might want to move the add term button and add completed term button to the top, on the right side of the Hero Heading*/
+
+/*You might want to add one more stat card, this is Overall GPA card*/
+
+
 
