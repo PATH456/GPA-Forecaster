@@ -3,34 +3,64 @@
 <html>
   <head>
     <link rel = "stylesheet" href = "homepage1.css">
+    <link rel = "stylesheet" href = "homepage1-overlay.css">
   </head>
 
   <body>
-    <div class = "general-div">
+    <div id = "generalDiv">
 
-      <div class = "div-header">
+      <div id = "header">
         <h1>GPA Calculator</h1>
         <p>Track your academic progress and forecast your grades</p>
       </div>
     
 
-      <div class = "div-overall-GPA">
+      <div id = "overallStat">
         <div class = "card">Overall GPA</div>
         <div class = "card">Total Terms</div>
         <div class = "card">Total courses</div>
       </div>
       
-      <div class ="div-add-term">
+      <div id ="academicBox">
         <p class = "academic-terms">Academic Terms</p>
-        <button class ="add-term">+ Add Term</button>
+        <button class ="add-term-button">+ Add Term</button>
       </div>
       
-      <div class = "div-first-term">
+      <div id = "termCard">
         <p>No terms yet</p>
         <p>Get started by adding your first academic term</p>
-        <button class = "add-first-term">Add Your First Term</button>
+        <button class = "add-first-term-button">Add Your First Term</button>
       </div>
     </div>
+
+    <div id = "modalOverlay" class = "overlay hidden">
+      <div id = "modalBox" role = "dialog">
+
+        <div class = "modal-header">
+           <h2 class = "modal-title">Add new term</h2>
+           <button class = "close-modal-button">x</button>
+        </div>
+
+        <div class = "modal-body">
+          <label>Season</label>
+          <select>
+            <option>Fall</option>
+            <option>Spring</option>
+            <option>Summer</option>
+          </select>
+
+          <label>Year</label>
+          <input type = "number" value = "2026">
+        </div>
+
+        <div class = "modal-footer">
+          <button id = "cancelButton">Cancel</button>
+          <button id = "addTerm">Add term</button>
+        </div>
+
+      </div>
+    </div>
+
   
 
     <script>

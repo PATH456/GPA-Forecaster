@@ -1,12 +1,11 @@
-
-.general-div {
+#generalDiv {
   display: grid;
   margin: 0 auto;
   max-width: 1200px;
   gap: 50px;
 }
 
-.div-overall-GPA {
+#overallStat {
   display: flex;
   justify-content: space-between;
 }
@@ -20,18 +19,22 @@
   margin-right: 30px;
 }
 
-.div-add-term {
+#academicBox {
   display: flex;
 }
 
-.add-term {
+.add-term-button {
   margin-left: auto;
   margin-right: 30px;
   width: 150px;
   border-radius: 15px;
+  background-color: rgba(39, 150, 206, 0.875);
+  color: white;
+  font-weight: 900;
+  font-size:large
 }
 
-.div-first-term {
+#termCard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,6 +45,12 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.add-first-term {
+.add-first-term-button {
   margin-top: 25px;
+  background-color: rgba(39, 150, 206, 0.875);
+  color: white;
+  font-weight: 900;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: large; 
 }
