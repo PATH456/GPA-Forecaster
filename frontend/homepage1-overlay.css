@@ -9,6 +9,7 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 9999;
+  padding: 16px;
 }
 
 #modalBox {
@@ -19,9 +20,9 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
-/* .hidden {
+.hidden {
   display: none;
-} */
+} 
 
 .modal-header{
   display: flex;
@@ -75,7 +76,7 @@
 
 /*You might want to move the add term button and add completed term button to the top, on the right side of the Hero Heading*/
 
-/*You might want to add one more stat card, this is Overall GPA card*/
+/*You might want to add one more stat card, which is Best Possible GPA card*/
 
 
 
