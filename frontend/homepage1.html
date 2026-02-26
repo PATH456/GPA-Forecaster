@@ -19,6 +19,7 @@
 
       <div id = "overallStat">
         <div class = "card">Overall GPA</div>
+        <div class = "card">Best Possible GPA</div>
         <div class = "card">Total Terms</div>
         <div class = "card">Total courses</div>
       </div>
@@ -28,10 +29,17 @@
         <button class ="add-term-button">+ Add Term</button>
       </div>
       
-      <div id = "termCard">
-        <p>No terms yet</p>
-        <p>Get started by adding your first academic term</p>
-        <button class = "add-first-term-button">Add Your First Term</button>
+      <div id = "termContainer">
+        <div class = "empty-state hidden">
+          <p>No terms yet</p>
+          <p>Get started by adding your first academic term</p>
+          <button class = "add-first-term-button">Add Your First Term</button>
+        </div>
+
+        <div class = "term-cards">
+          <div class = "card">Spring 2026</div>
+          <div class = "card">Fall 2026</div>
+        </div>
       </div>
     </div>
 
