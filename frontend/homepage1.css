@@ -62,6 +62,38 @@
   gap: 16px;
 }
 
+.term-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.term-name {
+  font-size: 25px;
+  font-weight:bolder;
+}
+
+.delete-term-button {
+  border: none;
+  background: white;
+  padding: 0px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 20px;
+}
+
+
+.term-info {
+  display: flex;
+  flex-direction: column;
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
 
 .add-first-term-button {
   margin-top: 25px;
