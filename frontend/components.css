@@ -1,0 +1,47 @@
+#overallStat {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.card {
+  flex: 1 1 220px;
+  background: white;
+  border-radius: 12px;
+  width: auto;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-label {
+  font-size: 18px;
+}
+.card-value {
+  font-size: 35px;
+}
+.card-description {
+  font-weight:lighter;
+  opacity: 0.8;
+}
+
+#academicBox {
+  display: flex;
+}
+.academic-header{
+  font-size: 18px;
+  font-weight:bold;
+}
+
+.add-term-button {
+  margin-left: auto;
+  margin-right: 30px;
+  width: 150px;
+  border-radius: 12px;
+  background-color: rgba(39, 150, 206, 0.875);
+  color: white;
+  font-weight: 900;
+  font-size:large;
+  padding: 10px;
+  cursor: pointer;
+}
