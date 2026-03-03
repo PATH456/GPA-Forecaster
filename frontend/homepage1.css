@@ -47,15 +47,15 @@ body {
   opacity: 0.8;
 }
 
-#academicBox {
+#addBox {
   display: flex;
 }
-.academic-header{
+.box-header{
   font-size: 18px;
   font-weight:bold;
 }
 
-.add-term-button {
+.add-button {
   margin-left: auto;
   margin-right: 30px;
   width: 150px;
@@ -68,7 +68,7 @@ body {
   cursor: pointer;
 }
 
-#termContainer {
+#container {
   background: white;
   border-radius: 12px;
   width: 100%;
@@ -82,23 +82,23 @@ body {
   align-items: center;
 }
 
-.term-cards{
+.container-cards{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
 }
 
-.term-header {
+.card-header {
   display: flex;
   justify-content: space-between;
 }
 
-.term-name {
+.card-name {
   font-size: 25px;
   font-weight:bolder;
 }
 
-.delete-term-button {
+.delete-button {
   border: none;
   background: white;
   padding: 0px;
@@ -109,7 +109,7 @@ body {
   width: 20px;
 }
 
-.term-info {
+.card-info {
   font-size: 18px;
   display: flex;
   flex-direction: column;
@@ -121,7 +121,7 @@ body {
 }
 
 
-.add-first-term-button {
+.add-first-button {
   margin-top: 25px;
   background-color: rgba(39, 150, 206, 0.875);
   color: white;
@@ -136,7 +136,7 @@ body {
   #overallStat {flex-direction: column; }
   .card {width: 100%}
 
-  #academicBox {flex-direction: column; align-items: stretch; }
-  .add-term-button {width: 100%;}
+  #addBox {flex-direction: column; align-items: stretch; }
+  .add-button {width: 100%;}
 }
 
