@@ -13,10 +13,10 @@
 }
 
 #modalBox {
-  width: min(520px, 90vw);
+  width: min(448px, 90vw);
   background: white;
   border-radius: 12px;
-  padding: 2px 25px 10px;
+  padding: 24px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
@@ -28,6 +28,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
 }
 
 .close-modal-button{
@@ -39,39 +40,59 @@
 
 .modal-body{
   display: grid;
-  margin-top: 12px;
-  gap: 30px;
+  margin-bottom: 24px;
+  gap: 16px;
 }
 
 .modal-body input, .modal-body select {
-  padding: 12px;
+  padding: 10px 12px;
   border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 16px;
+  font-family: inherit;
 }
 
 .modal-footer {
-  margin-top: 36px;
+  margin-top: 24px;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 12px;
 }
 
 .season, .year {
-  font-weight: 900;
-  font-size:large;
+  font-weight: 600;
+  font-size: 16px;
+  color: #111827;
+  display: block;
+  margin-bottom: 6px;
 }
 
 #cancelButton, #addTerm {
-  width: 50%;
+  flex: 1;
   cursor: pointer;
-  font-weight: 900;
-  font-size:large;
+  font-weight: 600;
+  font-size: 16px;
   border-radius: 12px;
-  padding: 10px;
+  padding: 10px 16px;
+  border: none;
 }
 
 #addTerm {
-  background-color: rgba(39, 150, 206, 0.875);
-  color: white; 
+  background-color: #6366f1;
+  color: white;
+}
+
+#cancelButton {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
 }
 
 
