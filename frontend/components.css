@@ -1,7 +1,6 @@
 #overallStat {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 16px;
 }
 
@@ -18,17 +17,17 @@
 
 .card-label {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: #6b7280;
   margin: 0;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .card-value {
   font-size: 28px;
   font-weight: 600;
   color: #111827;
   margin: 0;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 .card-description {
   font-size: 14px;
@@ -143,6 +142,23 @@
   font-weight: 600;
   margin: 0;
 }
+
+@media (max-width: 600px) {
+  #overallStat {flex-direction: column; }
+
+  .card {
+    width: 100%;
+    flex: none;
+  }
+
+  .container-cards {
+    grid-template-columns: 1fr;
+  }
+
+  #addBox {flex-direction: column; align-items: stretch; gap: 16px; }
+  .add-button {width: 100%;}
+}
+
 
 
 
