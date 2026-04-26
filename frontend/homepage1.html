@@ -1,130 +1,129 @@
 <!DOCTYPE html>
 
 
-<html>
+<html lang = "en">
   <head>
+    <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale = 1"/>
+    <title>GPA Forecaster</title>
     <link rel = "stylesheet" href = "homepage1.css">
     <link rel = "stylesheet" href = "homepage1-overlay.css">
   </head>
 
   <body>
-    <div id = "generalDiv">
+    <main id = "generalDiv">
 
-      <div id = "header">
+      <header id = "header">
         <h1>GPA Forecaster</h1>
         <p class = "text">Track your academic progress and forecast your grades</p>
-      </div>
+      </header>
 
-      <div id = "overallStat">
-        <div class = "card">
+      <section id = "overallStat" aria-label = "Overall GPA statistics">
+        <article class = "card">
           <p class = "card-label">Best Possible GPA</p>
           <h2 class = "card-value" id = "bestPossibleGPA">__</h2>
           <p class = "card-description">9.0 Scale</p>
-        </div>
-        <div class = "card">
+        </article>
+        <article class = "card">
           <p class = "card-label">Total Credits</p>
           <h2 class = "card-value" id = "totalCredits">0</h2>
           <p class = "card-description">Completed & In progress</p>
-        </div>
-      </div>
+        </article>
+      </section>
       
-      <div id ="addBox">
-        <p class = "box-header">Academic Terms</p>
-        <button class ="add-button">+ Add Term</button>
-      </div>
+      <section id ="addBox" aria-labelledby = "termsHeading">
+        <h2 class = "box-header" id = "termsHeading">Academic Terms</h2>
+        <button class ="add-button" type = "button">+ Add Term</button>
+      </section>
       
-      <div id = "container">
+      <section id = "container" aria-label = "Academic term list">
         <div class = "empty-state hidden">
           <p class = "text">No terms yet</p>
           <p class = "text">Get started by adding your first academic term</p>
-          <button class = "add-first-button">Add Your First Term</button>
+          <button class = "add-first-button" type = "button">Add Your First Term</button>
         </div>
 
         <div class = "container-cards">
-          <div class = "card">
+          <article class = "card">
             <div class = "card-header">
-              <p class = "card-name">Spring 2026</p>
-              <button class = "delete-button"><img src = "icons/icons8-delete.svg" alt = "Delete" class = "icon"></button>
+              <h3 class = "card-name">Spring 2026</h3>
+              <button class = "delete-button" type = "button" aria-label = "Delete Spring 2026 term"><img src = "icons/icons8-delete.svg" alt = "" class = "icon"></button>
             </div>
 
-            <div class = "card-info">
-              <dl class = "info-row">
+            <dl class = "card-info">
+              <div class = "info-row">
                 <dt>Term GPA</dt>
                 <dd>__</dd>
-              </dl>
-              <dl class = "info-row">
+              </div>
+              <div class = "info-row">
                 <dt>Courses</dt>
                 <dd>0</dd>
-              </dl>
-              <dl class = "info-row">
+              </div>
+              <div class = "info-row">
                 <dt>Credits</dt>
                 <dd>0</dd>
-              </dl>
-            </div>
-          </div>
+              </div>
+            </dl>
+          </article>
 
-          <div class = "card">
+          <article class = "card">
              <div class = "card-header">
-              <p class = "card-name">Spring 2026</p>
-              <button class = "delete-button"><img src = "icons/icons8-delete.svg" alt = "Delete" class = "icon"></button>
+              <h3 class = "card-name">Spring 2026</h3>
+              <button class = "delete-button" type = "button" aria-label = "Delete Spring 2026 term"><img src = "icons/icons8-delete.svg" alt = "" class = "icon"></button>
             </div>
 
-            <div class = "card-info">
-              <dl class = "info-row">
+            <dl class = "card-info">
+              <div class = "info-row">
                 <dt>Term GPA</dt>
                 <dd>__</dd>
-              </dl>
-              <dl class = "info-row">
+              </div>
+              <div class = "info-row">
                 <dt>Courses</dt>
                 <dd>0</dd>
-              </dl>
-              <dl class = "info-row">
+              </div>
+              <div class = "info-row">
                 <dt>Credits</dt>
                 <dd>0</dd>
-              </dl>
-            
-            </div>
-          </div>
+              </div>
+            </dl>
+          </article>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
 
     <div id = "modalOverlay" class = "overlay hidden">
-      <div id = "modalBox" role = "dialog">
+      <div id = "modalBox" role = "dialog" aria-modal = "true" aria-labelledby = "modalTitle">
 
         <div class = "modal-header">
-           <h2 class = "modal-title">Add New Term</h2>
-           <button class = "close-modal-button">x</button>
+           <h2 class = "modal-title" id = "modalTitle">Add New Term</h2>
+           <button class = "close-modal-button" type = "button" aria-label = "Close modal">x</button>
         </div>
 
         <div class = "modal-body">
-          <label class = "season">Season</label>
-          <select>
+          <label class = "season" for = "termSeason">Season</label>
+          <select id = "termSeason" name = "season">
             <option>Fall</option>
             <option>Spring</option>
             <option>Summer</option>
           </select>
 
-          <label class = "year">Year</label>
-          <input type = "number" value = "2026">
+          <label class = "year" for = "termYear">Year</label>
+          <input id = "termYear" name = "year" type = "number" value = "2026">
         </div>
 
         <div class = "modal-footer">
-          <button id = "cancelButton">Cancel</button>
-          <button id = "addTerm">Add term</button>
+          <button id = "cancelButton" type = "button">Cancel</button>
+          <button id = "addTerm" type = "button">Add term</button>
         </div>
 
       </div>
     </div>
-
-  
-
-    <script>
-
-
-    </script>
   </body>
+
+  <script>
+    const emptyBox = document.querySelector(".empty-state");
+    emptyBox.classList.remove("hidden");
+  </script>
 
 
 </html>

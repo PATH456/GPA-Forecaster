@@ -137,6 +137,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 0;
 }
 .info-row {
   display: flex;
@@ -182,4 +183,3 @@ body {
   #addBox {flex-direction: column; align-items: stretch; gap: 16px; }
   .add-button {width: 100%;}
 }
-
