@@ -120,7 +120,7 @@ gpaforecast.com/
 ### 1. Clone the repository
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/PATH456/gpaforecast.com
 cd gpaforecast.com
 ```
 
