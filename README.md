@@ -1,441 +1,332 @@
-# GPA Forecaster
+# gpaforecast.com
 
-A full-stack GPA planning and academic forecasting web application built with **Next.js**, **React**, **TypeScript/JavaScript**, **PostgreSQL**, and **Prisma**.
+gpaforecast.com is a student-focused web app for tracking academic terms, courses, grade components, and the best possible grades still available in a term.
 
-GPA Forecaster helps students organize academic terms, add courses, track grade impact, and forecast different GPA outcomes based on expected grades. The goal of the project is to make academic planning easier, more visual, and more personalized than a basic GPA calculator.
-
----
-
-## 🚀 Features
-
-### 🎓 Academic Term Management
-
-* Add, edit, and delete academic terms
-* Organize courses by term, such as `Spring 2026`, `Summer 2026`, or `Fall 2026`
-* View term-based GPA summaries
-* Track completed credits and planned credits per term
-* Separate completed, in-progress, and future academic terms
-
-### 📚 Course Management
-
-* Add courses manually with course code, course name, credit value, and grade information
-* Store courses under specific academic terms
-* Edit course details as grades change throughout the semester
-* Support current grade, final grade, and expected grade fields
-* Mark courses as completed, in progress, or planned
-
-### 🧮 GPA Calculation
-
-* Automatically recalculate GPA when grades or credits are updated
-* Calculate term GPA for each academic term
-* Calculate cumulative GPA across all terms
-* Track total credits and weighted grade points
-* Support GPA forecasting based on custom expected grades
-
-### 🔮 GPA Forecasting
-
-* Forecast best-case GPA scenarios
-* Create custom GPA scenarios using expected grades
-* Compare current GPA with projected GPA
-* Test different possible outcomes before final grades are released
-* Help students understand what grades they need to reach a target GPA
-
-### 📊 Grade Impact Analysis
-
-* Show how each course affects the overall GPA
-* Highlight high-credit courses that have stronger GPA impact
-* Estimate how much a course can raise or lower cumulative GPA
-* Support future grade component tracking inside each course
-
-### 👤 User Accounts
-
-* User registration and login
-* Save academic terms, courses, and GPA scenarios to each user account
-* Protect user-specific academic data
-* Allow users to access their GPA data from different devices
-
-### 📄 Future AI-Powered Syllabus Parsing
-
-* Upload a course syllabus file
-* Extract grading components automatically
-* Use AI to identify assignments, quizzes, midterms, projects, exams, and their weights
-* Convert extracted grading information into editable structured data
-* Let users review and confirm the result before saving
-
-This feature is planned as a future improvement and is not part of the first version.
+The MVP is intentionally focused on one core workflow: create academic terms, add courses, enter grading components, and calculate the best possible course grade, term GPA, and overall GPA.
 
 ---
 
-## 🏗️ Project Structure
+## Features
+
+### Academic Dashboard
+
+- View best possible GPA across all terms
+- View total completed/planned credits
+- View all academic terms
+- Create a new academic term
+- Switch between supported GPA scale displays
+- Open a term detail page from the dashboard
+
+### Academic Terms
+
+- Create terms with a name, season, and year
+- View a term's best possible GPA
+- View total credits inside a term
+- List all courses in a term
+- Add courses without leaving the term page
+
+### Courses
+
+- Create courses with a name, code, and credit value
+- View best possible course grade
+- View course progress
+- Navigate from a term page into a course detail page
+- Add grade components for each course
+
+### Grade Components
+
+- Add grading categories such as homework, quizzes, labs, midterms, finals, participation, and projects
+- Store component weight, item count, and points per item
+- Track individual grade items inside each component
+- Use graded and ungraded work to calculate best possible outcomes
+
+### Backend API
+
+- Django REST Framework API foundation
+- Health check endpoint at `/api/health/`
+- CORS support for a separate Next.js frontend
+- SQLite for local development by default
+- PostgreSQL support prepared for later development or production
+
+---
+
+## Project Structure
 
 ```text
-gpa-forecaster/
-├── app/                              # Next.js App Router
-│   ├── page.tsx                      # Landing page or dashboard entry
-│   ├── layout.tsx                    # Root layout
-│   ├── dashboard/                    # Main user dashboard
-│   │   └── page.tsx
-│   ├── terms/                        # Academic term pages
-│   │   └── page.tsx
-│   ├── courses/                      # Course management pages
-│   │   └── page.tsx
-│   ├── forecasts/                    # GPA forecasting pages
-│   │   └── page.tsx
-│   ├── auth/                         # Login/register pages
-│   │   ├── login/
-│   │   └── register/
-│   └── api/                          # Backend API routes
-│       ├── terms/
-│       │   └── route.ts
-│       ├── courses/
-│       │   └── route.ts
-│       ├── forecasts/
-│       │   └── route.ts
-│       └── dashboard/
-│           └── summary/
-│               └── route.ts
-│
-├── components/                       # Reusable React components
-│   ├── StatCard.tsx
-│   ├── TermCard.tsx
-│   ├── CourseCard.tsx
-│   ├── ForecastCard.tsx
-│   ├── AddTermModal.tsx
-│   └── AddCourseModal.tsx
-│
-├── lib/                              # Shared helper logic
-│   ├── prisma.ts                     # Prisma client setup
-│   ├── auth.ts                       # Authentication config
-│   ├── gpa.ts                        # GPA calculation helpers
-│   └── validations.ts                # Form/data validation schemas
-│
-├── prisma/                           # Database schema and migrations
-│   └── schema.prisma
-│
-├── public/                           # Static assets
-├── styles/                           # Global styles if needed
-├── package.json
-├── next.config.js
-├── tsconfig.json
-├── .env                              # Environment variables, not committed
-├── .gitignore
-└── README.md
+gpaforecast.com/
+|-- backend/
+|   |-- manage.py
+|   |-- requirements.txt
+|   |-- .env.example
+|   |-- config/
+|   |   |-- settings.py
+|   |   |-- urls.py
+|   |   |-- asgi.py
+|   |   `-- wsgi.py
+|   `-- academics/
+|       |-- models.py
+|       |-- serializers.py
+|       |-- views.py
+|       |-- urls.py
+|       |-- admin.py
+|       |-- apps.py
+|       |-- constants.py
+|       |-- services.py
+|       `-- migrations/
+|           `-- __init__.py
+|
+|-- frontend/
+|   |-- app/
+|   |-- components/
+|   |-- lib/
+|   |-- styles/
+|   |-- design-principals/
+|   `-- static-prototype/
+|
+|-- .gitignore
+`-- README.md
 ```
 
----
-
-## 🧰 Tech Stack
-
-| Layer                | Technology                                |
-| -------------------- | ----------------------------------------- |
-| Full-Stack Framework | Next.js                                   |
-| UI Library           | React                                     |
-| Main Language        | TypeScript / JavaScript                   |
-| Styling              | Tailwind CSS or plain CSS                 |
-| Database             | PostgreSQL                                |
-| ORM                  | Prisma                                    |
-| Authentication       | Auth.js / NextAuth or custom auth         |
-| Validation           | Zod                                       |
-| Deployment           | Vercel, Railway, Render, or Supabase      |
-| Future AI Feature    | OpenAI API or similar AI service          |
-| Future File Parsing  | PDF parsing service or AI file extraction |
+`backend/config/` contains project-level Django configuration. `backend/academics/` contains the academic domain logic. `frontend/static-prototype/` and `frontend/design-principals/` are design references while the UI is migrated into Next.js.
 
 ---
 
-## ⚡ Getting Started
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend Framework | Next.js |
+| UI Library | React |
+| Frontend Language | JavaScript |
+| Backend Framework | Django |
+| API | Django REST Framework |
+| Local Database | SQLite |
+| Production Database Target | PostgreSQL |
+| Config | python-decouple |
+| CORS | django-cors-headers |
+| Static Files | WhiteNoise |
+| Production Server | Gunicorn |
+
+---
+
+## Getting Started
 
 ### Prerequisites
 
-* Node.js 18+
-* npm, pnpm, or yarn
-* PostgreSQL database
-* Git
+- Python 3.10+
+- Node.js 20.9 or newer and npm
+- PostgreSQL optional for later development; SQLite is used by default
 
----
-
-## 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone <repo-url>
-cd gpa-forecaster
+cd gpaforecast.com
 ```
 
----
-
-## 2. Install Dependencies
+### 2. Create and activate the backend virtual environment
 
 ```bash
-npm install
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
-or, if using pnpm:
+### 3. Install backend dependencies
 
 ```bash
-pnpm install
+python3 -m pip install -r requirements.txt
 ```
 
----
+### 4. Configure backend environment variables
 
-## 3. Configure Environment Variables
-
-Create a `.env` file in the project root:
+Copy the example file:
 
 ```bash
 cp .env.example .env
 ```
 
-Example environment variables:
+Then edit `backend/.env` for your local machine.
 
-```env
-DATABASE_URL="postgresql://username:password@localhost:5432/gpa_forecaster"
-NEXTAUTH_SECRET="your-secret-key"
-NEXTAUTH_URL="http://localhost:3000"
-```
+| Variable | Description | Default |
+|---|---|---|
+| `DJANGO_SECRET_KEY` | Django signing key for local development | insecure dev key |
+| `DJANGO_DEBUG` | Turns Django debug mode on/off | `True` |
+| `DJANGO_ALLOWED_HOSTS` | Comma-separated hosts Django may serve | `localhost,127.0.0.1` |
+| `DJANGO_CORS_ALLOWED_ORIGINS` | Frontend origins allowed to call the API | `http://localhost:3000,http://127.0.0.1:3000` |
+| `DJANGO_CSRF_TRUSTED_ORIGINS` | Trusted browser origins for CSRF checks | `http://localhost:3000,http://127.0.0.1:3000` |
+| `DJANGO_USE_POSTGRES` | Use PostgreSQL instead of SQLite | `False` |
+| `DJANGO_DB_NAME` | PostgreSQL database name | `gpa_forecast` |
+| `DJANGO_DB_USER` | PostgreSQL username | `postgres` |
+| `DJANGO_DB_PASSWORD` | PostgreSQL password | empty |
+| `DJANGO_DB_HOST` | PostgreSQL host | `localhost` |
+| `DJANGO_DB_PORT` | PostgreSQL port | `5432` |
 
-Optional future AI feature variables:
-
-```env
-OPENAI_API_KEY="your-api-key"
-```
-
-| Variable          | Description                            |
-| ----------------- | -------------------------------------- |
-| `DATABASE_URL`    | PostgreSQL connection string           |
-| `NEXTAUTH_SECRET` | Secret key for authentication          |
-| `NEXTAUTH_URL`    | Local or production app URL            |
-| `OPENAI_API_KEY`  | API key for future AI syllabus parsing |
-
----
-
-## 4. Set Up the Database
-
-Generate the Prisma client:
+### 5. Check the backend configuration
 
 ```bash
-npx prisma generate
+python3 manage.py check
 ```
 
-Run database migrations:
+### 6. Apply database migrations
 
 ```bash
-npx prisma migrate dev
+python3 manage.py migrate
 ```
 
-Optional: open Prisma Studio to view and manage local database records:
+### 7. Run the backend development server
 
 ```bash
-npx prisma studio
+python3 manage.py runserver
 ```
 
----
+The backend runs at `http://127.0.0.1:8000`. The health check endpoint is available at `http://127.0.0.1:8000/api/health/`.
 
-## 5. Run the Development Server
+### 8. Install frontend dependencies
+
+Open a second terminal at the project root, then move into the frontend directory:
+
+```bash
+cd frontend
+npm ci
+```
+
+`npm ci` installs the exact frontend package versions recorded in
+`package-lock.json`. Use it after cloning the repository and whenever
+`package.json` or `package-lock.json` changes.
+
+The frontend uses `package.json` and `package-lock.json` for JavaScript
+dependencies. The backend uses `requirements.txt` for Python dependencies.
+Do not commit `node_modules/` or a Python virtual environment to Git.
+
+### 9. Configure the frontend environment
+
+```bash
+cp .env.local.example .env.local
+```
+
+The default frontend API URL points to the Django server at
+`http://127.0.0.1:8000`.
+
+### 10. Run the frontend development server
 
 ```bash
 npm run dev
 ```
 
-Visit the app in your browser:
+The frontend normally runs at `http://localhost:3000`. Keep the Django server
+running in the first terminal while using the frontend.
+
+### Dependency installation summary
+
+```bash
+
+
+
+---
+
+## Database
+
+The backend uses SQLite by default so the project can run locally without a separate database server.
+
+To use PostgreSQL, set this in `backend/.env`:
+
+```env
+DJANGO_USE_POSTGRES=True
+```
+
+Then fill in the `DJANGO_DB_*` variables for your local or hosted PostgreSQL database.
+
+For production, PostgreSQL is recommended.
+
+---
+
+## API Draft
+
+The frontend is expected to call Django REST Framework endpoints.
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `GET` | `/api/health/` | Confirm the backend is running |
+| `GET` | `/api/terms/` | List academic terms |
+| `POST` | `/api/terms/` | Create an academic term |
+| `GET` | `/api/terms/:id/` | Get one term |
+| `DELETE` | `/api/terms/:id/` | Delete one term |
+| `GET` | `/api/terms/:id/courses/` | List courses for one term |
+| `POST` | `/api/terms/:id/courses/` | Create a course in one term |
+| `GET` | `/api/courses/:id/` | Get one course |
+| `DELETE` | `/api/courses/:id/` | Delete one course |
+| `GET` | `/api/courses/:id/components/` | List grade components |
+| `POST` | `/api/courses/:id/components/` | Create a grade component |
+| `GET` | `/api/components/:id/items/` | List grade items for one component |
+| `PATCH` | `/api/grade-items/:id/` | Update one grade item's score |
+| `GET` | `/api/dashboard/summary/` | Get overall GPA and credit summary |
+
+---
+
+## Calculation Rules
+
+### Course Best Possible Grade
 
 ```text
-http://localhost:3000
+graded_weight_score = sum((component_weight_percent / 100) * earned_percent for graded components)
+remaining_weight = 100 - sum(component_weight for graded components)
+best_possible_percent = graded_weight_score + remaining_weight
 ```
 
----
-
-## 🗃️ Database Design
-
-The app stores user-specific academic data in a relational database.
-
-### Main Models
-
-| Model                 | Purpose                                                                |
-| --------------------- | ---------------------------------------------------------------------- |
-| `User`                | Stores user account information                                        |
-| `AcademicTerm`        | Represents one academic term                                           |
-| `Course`              | Represents a course inside a term                                      |
-| `ForecastScenario`    | Stores a custom GPA forecasting scenario                               |
-| `ScenarioCourseGrade` | Stores expected grades for courses inside a scenario                   |
-| `GradingComponent`    | Future model for assignments, quizzes, exams, and weighted grade items |
-
-### Example Relationship
+### Term Best Possible GPA
 
 ```text
-User
-└── AcademicTerm
-    └── Course
-        └── GradingComponent
-
-User
-└── ForecastScenario
-    └── ScenarioCourseGrade
+course_grade_point = convert best_possible_course_percent to selected GPA scale
+weighted_points = course_grade_point * course_credits
+term_best_possible_gpa = sum(weighted_points) / sum(course_credits)
 ```
 
----
-
-## 🔌 API Overview
-
-The app uses Next.js API routes or server actions to handle backend logic.
-
-Example API routes:
-
-| Method   | Endpoint                 | Description                                 |
-| -------- | ------------------------ | ------------------------------------------- |
-| `POST`   | `/api/auth/register`     | Register a new user                         |
-| `POST`   | `/api/auth/login`        | Log in a user                               |
-| `GET`    | `/api/terms`             | Get all academic terms for the current user |
-| `POST`   | `/api/terms`             | Create a new academic term                  |
-| `PATCH`  | `/api/terms/:id`         | Update an academic term                     |
-| `DELETE` | `/api/terms/:id`         | Delete an academic term                     |
-| `GET`    | `/api/courses`           | Get all courses for the current user        |
-| `POST`   | `/api/courses`           | Create a new course                         |
-| `PATCH`  | `/api/courses/:id`       | Update course information                   |
-| `DELETE` | `/api/courses/:id`       | Delete a course                             |
-| `POST`   | `/api/forecasts`         | Create a GPA forecast scenario              |
-| `GET`    | `/api/dashboard/summary` | Get GPA summary data                        |
-
----
-
-## 🧮 GPA Calculation Logic
-
-The GPA calculation is based on weighted grade points:
+### Overall Best Possible GPA
 
 ```text
-Course weighted points = grade point × course credits
-GPA = total weighted grade points / total credits
+overall_best_possible_gpa = sum(all course weighted_points) / sum(all course credits)
 ```
 
-Example:
+The MVP should use UVic's grading standard as the source of truth for letter grades and 9.0 GPA values.
 
-```text
-Course A: 4.0 grade point × 3 credits = 12 weighted points
-Course B: 3.0 grade point × 4 credits = 12 weighted points
+| Percentage | Letter Grade | UVic 9.0 Value |
+|---|---|---|
+| `90-100` | `A+` | `9` |
+| `85-89` | `A` | `8` |
+| `80-84` | `A-` | `7` |
+| `77-79` | `B+` | `6` |
+| `73-76` | `B` | `5` |
+| `70-72` | `B-` | `4` |
+| `65-69` | `C+` | `3` |
+| `60-64` | `C` | `2` |
+| `50-59` | `D` | `1` |
+| `0-49` | `E/F` | `0` |
 
-Total weighted points = 24
-Total credits = 7
-GPA = 24 / 7 = 3.43
-```
-
-The app recalculates GPA whenever course grades, expected grades, or credit values change.
+If the MVP keeps a 4.0 scale option, the conversion should be defined as an app-specific display conversion rather than treated as UVic's source-of-truth grading scale.
 
 ---
 
-## 📄 Future AI Syllabus Parsing Flow
+## Environment And Security Notes
 
-This feature is planned for a later version.
-
-The expected workflow is:
-
-```text
-1. User uploads a syllabus file
-2. App extracts text from the file
-3. AI identifies grading components and weights
-4. App converts the result into structured data
-5. User reviews and edits the extracted components
-6. User confirms and saves the components to the course
-```
-
-Example extracted result:
-
-```json
-{
-  "courseName": "CSC 225",
-  "gradingComponents": [
-    { "name": "Assignments", "weight": 20 },
-    { "name": "Quizzes", "weight": 10 },
-    { "name": "Midterm", "weight": 25 },
-    { "name": "Final Exam", "weight": 45 }
-  ]
-}
-```
-
-Important design rule:
-
-```text
-AI should suggest the grading structure, but the user should confirm it before saving.
-```
+- Never commit `backend/.env`.
+- Keep `backend/.env.example` committed so teammates know which variables they need.
+- Use `DJANGO_` prefixes for Django settings to avoid conflicts with system environment variables.
+- Use a strong `DJANGO_SECRET_KEY` in production.
+- Set `DJANGO_DEBUG=False` in production.
+- Set `DJANGO_ALLOWED_HOSTS` to real production domains before deploying.
+- Store production environment variables in the hosting platform's dashboard or secret manager.
 
 ---
 
-## 🔑 Environment & Security Notes
+## Roadmap / TODO
 
-* Never commit `.env` files to GitHub
-* Keep database credentials private
-* Keep authentication secrets private
-* Protect all user-specific GPA data
-* Validate user input before saving to the database
-* Use HTTPS in production
-* Do not save uploaded syllabus files permanently unless necessary
-* Let users review AI-parsed syllabus data before saving
+- [ ] Implement the Dashboard `Page` component in `frontend/app/page.js`.
+- [ ] Implement a reusable `TermCard` component for the Dashboard.
+- [ ] Run the frontend (npm run dev) and backend (python manage.py runserver ) locally, test the Dashboard, and fix any errors found.
 
 ---
 
-## 🗺️ Roadmap / TODO
+## License
 
-### Version 1: Core Full-Stack App
-
-* [ ] Set up Next.js project
-* [ ] Design reusable React components
-* [ ] Create Prisma database schema
-* [ ] Add academic term CRUD
-* [ ] Add course CRUD
-* [ ] Add GPA calculation logic
-* [ ] Add dashboard summary cards
-* [ ] Save data to PostgreSQL
-
-### Version 2: User Accounts
-
-* [ ] Add user registration and login
-* [ ] Protect dashboard routes
-* [ ] Connect terms and courses to specific users
-* [ ] Add account settings page
-
-### Version 3: Forecasting System
-
-* [ ] Add best-case GPA forecast
-* [ ] Add custom expected-grade scenarios
-* [ ] Add target GPA calculator
-* [ ] Add course impact analysis
-* [ ] Add comparison between current GPA and forecasted GPA
-
-### Version 4: AI Syllabus Parsing
-
-* [ ] Add syllabus upload feature
-* [ ] Extract text from PDF files
-* [ ] Use AI to identify grading components
-* [ ] Convert parsed output into editable grading components
-* [ ] Let users confirm before saving
-* [ ] Add support for scanned or image-based syllabi if needed
-
-### Version 5: Polish & Deployment
-
-* [ ] Add form validation
-* [ ] Add loading and error states
-* [ ] Add responsive mobile layout
-* [ ] Add unit and integration tests
-* [ ] Deploy the app
-* [ ] Write production setup instructions
-
----
-
-## 🧪 Future Improvements
-
-* PDF syllabus parsing
-* AI-powered grade component extraction
-* Assignment-level grade tracking
-* GPA trend charts
-* Best-case and worst-case GPA comparison
-* Export GPA report as PDF
-* University-specific GPA scale support
-* Dark mode
-* Email reminders for important academic deadlines
-
----
-
-## 📝 License
-
-This project is for personal learning, academic planning, and portfolio development.
-
-
-## Author
-Thanh Hải Phạm
+This project is for personal and educational use unless a different license is added later.
